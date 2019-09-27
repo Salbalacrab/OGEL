@@ -1,0 +1,42 @@
+struct instruction
+{
+	float MoteurGauche;
+	float MoteurDroite;
+	float MoteurHauteur;
+	bool tirer;
+	bool auto;
+}
+
+function autoturret();
+
+function tirer();
+
+function movmentRL(float gauche, float droite)
+{
+ ActionMotorRight = droite;
+ ActionMotorLeft = gauche;
+}
+
+function movmentH(float haut)
+{
+ ActionMotorHight= haut;
+}
+
+auto = off;
+if(1){
+  if(auto = on)
+  {
+    struct new_instruction = readinstructions();
+    auto = new_instruction.auto;
+    autoturret();
+  }
+  if(auto = off)
+  {
+    struct new_instruction = readinstructions();
+    auto = new_instruction.auto;
+    movmentRL(new_instruction.MoteurGauche, new_instruction.MoteurDroite);
+    movmentH(new_instruction.MoteurHauteur);
+    tir(new_instruction.tirer);
+  }
+
+}
